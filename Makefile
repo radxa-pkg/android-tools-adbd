@@ -7,11 +7,8 @@ DESCRIPTION = Android debug bridge daemon
 
 all:
 	fpm -s dir -t deb -n $(NAME) -v $(VERSION) \
-		-p $(NAME)_$(VERSION)_all.deb \
+		-a arm64 \
 		--deb-priority optional --category utils \
-		--depends android-tools-adbd \
-		--force \
-		--deb-field "Multi-Arch: foreign" \
 		--deb-field "Replaces: $(NAME)" \
 		--deb-field "Conflicts: $(NAME)" \
 		--deb-field "Provides: $(NAME)" \
@@ -20,5 +17,5 @@ all:
 		--license "GPL-2+" \
 		-m "Radxa <dev@radxa.com>" \
 		--vendor "Radxa" \
-		-a all \
+		--force \
 		./root/=/
